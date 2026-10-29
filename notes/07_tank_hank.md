@@ -16,7 +16,7 @@ heterogeneous-agent models" (Python package `sequence-jacobian`); Auclert, Rognl
 
 ## 7.1 TANK on paper
 
-A share $\lambda$ of households are hand-to-mouth (HtM): $C^H_t = $ income$_t$. Let $\chi$ be the elasticity of
+A share $\lambda$ of households are hand-to-mouth (HtM): $C^H_t = \text{income}_t$. Let $\chi$ be the elasticity of
 HtM income to aggregate income: $c^H_t = \chi y_t$. Savers obey the Euler equation. Aggregating
 $y_t = \lambda c^H_t + (1-\lambda)c^S_t$:
 

@@ -32,25 +32,25 @@ $MC_t = (W_t/P_t)/A_t$.
 
 ## 1.2 Calvo pricing → the NKPC
 
-A resetting firm chooses $P_t^*$ to maximize expected discounted profits **while the price is stuck**:
+A resetting firm chooses $P_t^{\ast}$ to maximize expected discounted profits **while the price is stuck**:
 
 $$
-\max_{P_t^*} \; E_t \sum_{k=0}^{\infty} (\beta\theta)^k \Lambda_{t,t+k}
-\left[ \frac{P_t^*}{P_{t+k}} - MC_{t+k} \right] \left(\frac{P_t^*}{P_{t+k}}\right)^{-\varepsilon} Y_{t+k}.
+\max_{P_t^{\ast}} \; E_t \sum_{k=0}^{\infty} (\beta\theta)^k \Lambda_{t,t+k}
+\left[ \frac{P_t^{\ast}}{P_{t+k}} - MC_{t+k} \right] \left(\frac{P_t^{\ast}}{P_{t+k}}\right)^{-\varepsilon} Y_{t+k}.
 $$
 
-FOC: $\sum_k (\beta\theta)^k E_t\{\Lambda_{t,t+k} Y_{t+k} P_{t+k}^{\varepsilon}[P_t^* - \mathcal{M} P_{t+k} MC_{t+k}]\} = 0$,
+FOC: $\sum_k (\beta\theta)^k E_t\lbrace \Lambda_{t,t+k} Y_{t+k} P_{t+k}^{\varepsilon}[P_t^{\ast} - \mathcal{M} P_{t+k} MC_{t+k}]\rbrace  = 0$,
 where $\mathcal{M} = \varepsilon/(\varepsilon-1)$ is the desired markup. Two facts:
 
-1. **Recursive form (what you code):** $p^*_t \equiv P^*_t/P_t = \mathcal{M}\, x_{1t}/x_{2t}$ with
+1. **Recursive form (what you code):** $p^{\ast}_t \equiv P^{\ast}_t/P_t = \mathcal{M}\, x_{1t}/x_{2t}$ with
    $x_{1t} = \Lambda_t MC_t Y_t + \beta\theta E_t \Pi_{t+1}^{\varepsilon} x_{1,t+1}$ and
    $x_{2t} = \Lambda_t Y_t + \beta\theta E_t \Pi_{t+1}^{\varepsilon-1} x_{2,t+1}$.
-   The price index gives $1 = \theta \Pi_t^{\varepsilon-1} + (1-\theta) (p_t^*)^{1-\varepsilon}$ and
+   The price index gives $1 = \theta \Pi_t^{\varepsilon-1} + (1-\theta) (p_t^{\ast})^{1-\varepsilon}$ and
    **price dispersion** $\Delta_t = \int (P_t(j)/P_t)^{-\varepsilon}dj$ evolves as
-   $\Delta_t = \theta \Pi_t^{\varepsilon} \Delta_{t-1} + (1-\theta)(p^*_t)^{-\varepsilon}$, with $Y_t \Delta_t = A_t N_t$.
+   $\Delta_t = \theta \Pi_t^{\varepsilon} \Delta_{t-1} + (1-\theta)(p^{\ast}_t)^{-\varepsilon}$, with $Y_t \Delta_t = A_t N_t$.
    This is exactly what `code/enk.py` and `dynare/etank.mod` implement.
-2. **Log-linear form:** $p^*_t - p_{t-1} = (1-\beta\theta) \sum_k (\beta\theta)^k E_t[\widehat{mc}_{t+k} + p_{t+k} - p_{t-1}]$
-   and $\pi_t = (1-\theta)(p^*_t - p_{t-1})$. Combining:
+2. **Log-linear form:** $p^{\ast}_t - p_{t-1} = (1-\beta\theta) \sum_k (\beta\theta)^k E_t[\widehat{mc}_{t+k} + p_{t+k} - p_{t-1}]$
+   and $\pi_t = (1-\theta)(p^{\ast}_t - p_{t-1})$. Combining:
 
 $$
 \boxed{\pi_t = \beta E_t \pi_{t+1} + \lambda\, \widehat{mc}_t, \qquad \lambda = \frac{(1-\theta)(1-\beta\theta)}{\theta}}
@@ -101,7 +101,7 @@ a = \frac{\sigma(1-\rho_u)}{\Omega}, \quad b = -\frac{\phi_\pi - \rho_u}{\Omega}
 \Omega = \sigma(1-\rho_u)(1-\beta\rho_u) + \kappa(\phi_\pi - \rho_u).
 $$
 
-   Do this by hand once. A more hawkish $\phi_\pi$ lowers $a$ and raises $|b|$: the policy trade-off in two lines.
+   Do this by hand once. A more hawkish $\phi_\pi$ lowers $a$ and raises $\lvert b\rvert$: the policy trade-off in two lines.
 
 ## 1.5 Solving linear rational-expectations models (what Dynare does)
 

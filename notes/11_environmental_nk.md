@@ -1,9 +1,82 @@
 # Module 11: Environmental New Keynesian models (E-DSGE)
 
-> **Goal:** know the literature map, understand the canonical E-NK model line by line (it is coded
+> **Goal:** understand the ways the environment enters an NK model, know the literature map, understand the canonical E-NK model line by line (it is coded
 > in `code/enk.py` and `dynare/etank.mod`), and read its results the way a referee would.
 
-## 11.1 Literature map
+## 11.1 How the environment enters an NK model (it is not only taxes)
+
+An environmental NK model is the NK core plus **four blocks**. Each block has several modeling options, and the
+choice of options *is* the paper's identity.
+
+```mermaid
+flowchart LR
+    P["Production / energy use"] -->|"emissions E"| S["Stock: pollution, CO2, temperature"]
+    S -->|"damages d(X)"| P
+    Pol["Policy: tax, cap, standards, subsidies, recycling"] -->|"marginal cost, abatement"| P
+    Phys["Physical shocks: extreme weather, heat"] -->|"supply shocks"| P
+    Fin["Finance: brown/green assets, central bank"] -->|"credit spreads"| P
+    P --> NK["NK core: Phillips curve, IS curve, policy rule"]
+    NK --> P
+```
+
+| Block | Options | Classic references |
+|---|---|---|
+| **1. Source of emissions** | by-product of output $E = \varphi(1-U)Y$ (this repo); fossil **energy input** in production ($E \propto$ fossil use); household energy consumption; brown vs. green sectors | Heutel (2012); Fischer–Springborn (2011); Golosov et al. (2014) |
+| **2. Stock dynamics** | pollution stock with decay; carbon cycle + temperature (DICE-style) | Heutel (2012); Nordhaus; Golosov et al. (2014) |
+| **3. Damages (the externality)** | on TFP $Y=(1-d(X))AF$ (most common); in utility (pollution disutility); on capital depreciation; on labor productivity/health; on volatility (disaster risk) | Heutel; GHKT; Hassler–Krusell–Smith (2016) |
+| **4. Mitigation and policy** | abatement technology; clean/dirty substitution, directed technical change; instruments: **tax, cap-and-trade, intensity target, standards, green subsidies, green public investment, revenue recycling, border adjustment**; central-bank/financial tools: green QE, collateral, capital requirements | Annicchiarico–Di Dio (2015); Acemoglu et al. (2012); Module 5 papers |
+
+Blocks 1–3 make it *environmental*: a closed loop with an externality. Without them you have an **energy** NK model
+(energy price shocks), which is also a legitimate and closely related literature.
+
+### Physical risk vs. transition risk (NGFS taxonomy)
+
+* **Transition risk:** macro effects of *moving away* from fossil fuels: carbon prices, regulation, technology shifts, stranded assets.
+* **Physical risk:** macro effects of *climate itself*, both **acute** (floods, droughts, heat waves → supply shocks, capital
+  destruction, food-price spikes) and **chronic** (lower productivity, lower potential growth, a possibly lower natural rate $r^*$).
+
+Isabel Schnabel's (ECB, 2022) split of the inflation consequences is a useful map:
+**climateflation** (physical risk, e.g. weather-driven food prices), **fossilflation** (fossil energy prices),
+**greenflation** (transition demand for metals and minerals, and carbon pricing).
+
+### Why business-cycle NK work has focused on the transition side
+
+1. **Damages are slow.** The pollution stock barely moves at quarterly frequency (see §11.3–11.4: with a 10% domestic share and
+   0.21% quarterly decay, $X$ is almost constant). Over a 2–3-year monetary-policy horizon, damages through the stock are
+   second order.
+2. **Policy is fast and large.** Carbon prices can jump (EU ETS has ranged from ~5 to ~100 €/t) and enter marginal cost immediately.
+3. **A pure physical TFP shock creates no policy trade-off in the basic NK model.** It moves natural and efficient output together,
+   so divine coincidence holds. Physical shocks matter for monetary policy only with extra structure:
+   * hitting **specific sectors** (food, energy) with different price stickiness (Module 8);
+   * **real-wage rigidity** (Blanchard–Galí);
+   * persistent effects on **$r^*$** and hence on how often the ZLB binds (Module 4);
+   * **capital destruction** with financial frictions (Module 5);
+   * **disaster risk** affecting precautionary saving (nonlinear solution needed).
+
+   That is why physical risk is a growing but less mature area for NK modeling, and potentially a good niche.
+   Relevant starting points include Keen & Pakko (2011, *Southern Economic Journal*), "Monetary policy and natural disasters in a DSGE model",
+   and the empirical work on temperature shocks and inflation (e.g. Kotz, Kuik, Lis & Nickel 2024, *Communications Earth & Environment*).
+
+### So what are E-NK papers actually about? Three families of questions
+
+| Family | Object of study | Example question | Example papers |
+|---|---|---|---|
+| **A. Environmental policy design over the cycle** | the environmental instrument | Tax or cap when prices are sticky? Should the carbon price be procyclical? | Heutel (2012); Fischer–Springborn (2011); Annicchiarico–Di Dio (2015) |
+| **B. Climate and macro stabilization** | monetary (and fiscal) policy | Is the transition inflationary? How should the central bank react to carbon taxes or climate shocks? | Nakov–Thomas; Del Negro et al.; Olovsson–Vestin; Ferrari–Nispi Landi (2022) |
+| **C. Climate and finance** | financial stability, central-bank balance sheet | Does transition risk amplify through banks? Does green QE work? | Carattini et al. (2023); Diluiso et al. (2021); Ferrari–Nispi Landi (2023) |
+
+Across all three, the **transmission channels** of the environmental block into the NK core are:
+
+1. **Cost channel:** taxes, abatement and energy prices raise marginal cost → Phillips curve (cost-push). *The dominant channel.*
+2. **Demand channel:** revenue recycling, income and wealth effects (HANK), green investment booms.
+3. **Financial channel:** asset revaluation (stranded assets), net worth, spreads.
+4. **Supply / natural-rate channel:** damages and physical shocks lower potential output and possibly $r^*$.
+5. **Expectations channel:** announced carbon-price paths, salience of energy prices, credibility.
+
+So transition risk is the most-studied piece, but it is only one row of one table: a paper can be about
+policy *design* (family A), about the *cost channel* without any "risk" at all, or about physical risk.
+
+## 11.2 Literature map
 
 **Foundations (RBC + environment)**
 * Fischer & Springborn (2011, *JEEM*), "Emissions targets and the real business cycle: intensity targets versus caps or taxes".
@@ -34,7 +107,7 @@ HANK with energy), price setting (Del Negro et al.).
 > **Caveat on references:** listed from memory and spot-checked. Before citing, confirm each one's final journal/year
 > on Google Scholar/RePEc. Working papers in this field get published fast.
 
-## 11.2 The canonical E-NK model (as coded)
+## 11.3 The canonical E-NK model (as coded)
 
 Everything from Module 1, plus:
 
@@ -65,7 +138,7 @@ frequencies: **damages are a long-run issue; business-cycle E-DSGE is mostly abo
 Calibration (in `BASE` in `code/enk.py`): quarterly, $\beta = 0.99$, $\sigma=\varphi=1$, $\varepsilon = 6$, $\theta = 0.75$,
 $\theta_1 = 0.056$, $\theta_2 = 2.8$, steady-state abatement 20%, $\delta_X = 0.0021$, steady-state damages 0.5% of output.
 
-## 11.3 Results (run `python code/enk.py`)
+## 11.4 Results (run `python code/enk.py`)
 
 **(a) TFP shock, tax vs. cap** (`figures/enk_tfp_tax_vs_cap.png`)
 * Under a **tax**, emissions rise one-for-one with output (procyclical, as in the data).
@@ -88,7 +161,7 @@ $\theta_1 = 0.056$, $\theta_2 = 2.8$, steady-state abatement 20%, $\delta_X = 0.
 (a path to 100+ €/t, energy as a separate input with low substitutability) need a richer energy block and nonlinear
 transitions (Module 10).
 
-## 11.4 What a "sophisticated" version adds (pick 1–2, not all)
+## 11.5 What a "sophisticated" version adds (pick 1–2, not all)
 
 1. A separate **energy** input (fossil vs. clean), CES with low short-run substitutability. This is where real inflation effects come from.
 2. **Capital** with adjustment costs; green vs. brown capital (transition risk).

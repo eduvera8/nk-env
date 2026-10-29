@@ -41,7 +41,7 @@ policy survives? Pairs well with survey data on household inflation expectations
    one-page "what is known / what is not" memo. Search RePEc/NBER/CEPR/ECB WP series for 2024–2026 work.
 2. **Simple model (3–4 weeks).** Smallest model that has your mechanism. Get an analytical result if you can (THANK, two-state ZLB,
    two-sector NKPC). This becomes Section 3 of the paper.
-3. **Quantitative model (6–10 weeks).** Add only the frictions that matter (Module 11.4). Calibrate/estimate. Match one empirical IRF
+3. **Quantitative model (6–10 weeks).** Add only the frictions that matter (Module 11.5). Calibrate/estimate. Match one empirical IRF
    (e.g. Känzig's carbon-policy shock) as external validation.
 4. **Policy experiments.** Welfare in consumption-equivalent terms (second order), optimal simple rules, Ramsey benchmark.
 5. **Robustness.** Calvo vs. Rotemberg, parameter sensitivity, alternative rules.

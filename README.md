@@ -21,7 +21,7 @@ The code builds up to an environmental TANK model in Python *and* Dynare (cross-
 | 8 | [Price setting](notes/08_price_setting_menu_costs.md) | menu costs, selection, multisector/networks | greenflation, which inflation to target |
 | 9 | [Behavioral NK](notes/09_behavioral_expectations.md) | cognitive discounting, level-k, learning | credibility of carbon-price paths, salience |
 | 10 | [Methods toolkit](notes/10_methods_toolkit.md) | which tool for which problem | fluctuations vs transitions |
-| 11 | [Environmental NK](notes/11_environmental_nk.md) | literature map + the E-TANK model, results | the core of your paper |
+| 11 | [Environmental NK](notes/11_environmental_nk.md) | how the environment enters (4 blocks, physical vs transition risk, 5 channels), literature map, the E-TANK model | the core of your paper |
 | 12 | [From model to paper](notes/12_from_model_to_paper.md) | candidate questions, workflow, skeleton | — |
 
 ## Suggested schedule (~14 weeks, part-time)

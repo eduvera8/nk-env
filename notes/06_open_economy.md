@@ -16,8 +16,8 @@ Gopinath et al. (2020, *AER*), "Dominant currency paradigm"; Schmitt-Grohé & Ur
 Home is small, with openness $\alpha$ (import share). Define the terms of trade $s_t = p_{F,t} - p_{H,t}$.
 
 * CPI vs. domestic inflation: $\pi_t = \pi_{H,t} + \alpha \Delta s_t$.
-* Complete markets / international risk sharing: $c_t = y^*_t + \frac{1-\alpha}{\sigma} s_t$.
-* Goods market: $y_t = y^*_t + \frac{\omega_\alpha}{\sigma} s_t$ (with $\omega_\alpha$ depending on trade elasticities).
+* Complete markets / international risk sharing: $c_t = y^{\ast}_t + \frac{1-\alpha}{\sigma} s_t$.
+* Goods market: $y_t = y^{\ast}_t + \frac{\omega_\alpha}{\sigma} s_t$ (with $\omega_\alpha$ depending on trade elasticities).
 * Domestic NKPC: $\pi_{H,t} = \beta E_t \pi_{H,t+1} + \kappa_\alpha x_t$, with $\kappa_\alpha = \lambda(\sigma_\alpha + \varphi)$, $\sigma_\alpha = \sigma/(1 + \alpha(\omega - 1))$.
 * Open-economy IS: $x_t = E_t x_{t+1} - \frac{1}{\sigma_\alpha}(i_t - E_t\pi_{H,t+1} - r^n_t)$.
 
