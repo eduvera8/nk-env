@@ -33,7 +33,7 @@ Blocks 1–3 make it *environmental*: a closed loop with an externality. Without
 
 * **Transition risk:** macro effects of *moving away* from fossil fuels: carbon prices, regulation, technology shifts, stranded assets.
 * **Physical risk:** macro effects of *climate itself*, both **acute** (floods, droughts, heat waves → supply shocks, capital
-  destruction, food-price spikes) and **chronic** (lower productivity, lower potential growth, a possibly lower natural rate $r^*$).
+  destruction, food-price spikes) and **chronic** (lower productivity, lower potential growth, a possibly lower natural rate $r^{\ast}$).
 
 Isabel Schnabel's (ECB, 2022) split of the inflation consequences is a useful map:
 **climateflation** (physical risk, e.g. weather-driven food prices), **fossilflation** (fossil energy prices),
@@ -49,7 +49,7 @@ Isabel Schnabel's (ECB, 2022) split of the inflation consequences is a useful ma
    so divine coincidence holds. Physical shocks matter for monetary policy only with extra structure:
    * hitting **specific sectors** (food, energy) with different price stickiness (Module 8);
    * **real-wage rigidity** (Blanchard–Galí);
-   * persistent effects on **$r^*$** and hence on how often the ZLB binds (Module 4);
+   * persistent effects on **$r^{\ast}$** and hence on how often the ZLB binds (Module 4);
    * **capital destruction** with financial frictions (Module 5);
    * **disaster risk** affecting precautionary saving (nonlinear solution needed).
 
@@ -70,7 +70,7 @@ Across all three, the **transmission channels** of the environmental block into 
 1. **Cost channel:** taxes, abatement and energy prices raise marginal cost → Phillips curve (cost-push). *The dominant channel.*
 2. **Demand channel:** revenue recycling, income and wealth effects (HANK), green investment booms.
 3. **Financial channel:** asset revaluation (stranded assets), net worth, spreads.
-4. **Supply / natural-rate channel:** damages and physical shocks lower potential output and possibly $r^*$.
+4. **Supply / natural-rate channel:** damages and physical shocks lower potential output and possibly $r^{\ast}$.
 5. **Expectations channel:** announced carbon-price paths, salience of energy prices, credibility.
 
 So transition risk is the most-studied piece, but it is only one row of one table: a paper can be about
