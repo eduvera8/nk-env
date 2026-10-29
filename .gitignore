@@ -1,0 +1,7 @@
+dynare/etank/
+dynare/+etank/
+dynare/*.log
+dynare/*.mat
+dynare/etank_results.mat
+__pycache__/
+*.pyc
